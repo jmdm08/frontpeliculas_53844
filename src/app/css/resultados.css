@@ -1,0 +1,15 @@
+.busqueda input{
+    width: 100%;
+    line-height: 35px;
+    font-size: 20px;
+}
+
+.resultados{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.resultados > * {
+    flex-basis: 30%;
+}

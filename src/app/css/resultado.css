@@ -1,0 +1,12 @@
+.resumen{
+    border: 2px solid steelblue;
+    padding: 10px;
+    margin-top: 10px;
+}
+.resumen-img{
+    text-align: center;
+}
+
+.resumen-img > img {
+    width: 50%;
+}
