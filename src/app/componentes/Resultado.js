@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import "../css/resultado.css"
 
-export default function Resultado(){
+export default function Resultado(props){
 
     function handleClick(evento){
         evento.stopPropagation();
@@ -9,20 +11,20 @@ export default function Resultado(){
 
     return (
         <>
-            <div className="resumen" onClick={handleClick} >
+            <div className="resumen" onClick={handleClick} key={props.pelicula._id} >
                 <div className="resumen-img">
-                    <img src="https://i2.wp.com/hipertextual.com/wp-content/uploads/2016/10/avatar-poster-01.jpg?resize=600%2C886&ssl=1"></img>
+                    <img src={props.pelicula.poster} alt="Póster"></img>
                 </div>
                 <div>
-                    <h1>AVATAR</h1>
+                    <h1>{props.pelicula.titulo}</h1>
                 </div>
                 <div>
-                    <p>RESUMEN: </p>
+                    <p>{props.pelicula.sinopsis}</p>
                 </div>
                 <div>
                     <span>
-                        Rating:
-                        <i></i>
+                        <FontAwesomeIcon icon={faStarHalfAlt} />
+                        {props.pelicula.rating}
                     </span>
                 </div>
             </div>

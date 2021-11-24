@@ -1,23 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Resultado from "../componentes/Resultado";
+import peliculas from "../../peliculas50.json";
 import '../css/resultados.css';
 
 export default function ResultadosBusqueda(){
     const [busqueda, setBusqueda] = useState("");
     const [resultados, setResultados] = useState([]);
 
+    useEffect(()=>{
+        // TODO: CARGAR DESDE EL API.
+        if(busqueda === ""){
+            setResultados(peliculas);
+        }
+        else{
+            if(busqueda.length >= 3){
+                let resultadosBusqueda = peliculas.slice(0,busqueda.length);
+                setResultados(resultadosBusqueda);
+            }
+            else{
+                setResultados([]);
+            }
+        }
+    }, [busqueda]);
+
     function handleChange(evento){
         evento.preventDefault();
         evento.stopPropagation();
         let tituloPelicula = evento.target.value; 
-        if(tituloPelicula.length >= 3){
-            // TODO: CONECTAR API -> obtenerPeliculasTitulo
-            let resultadosBuquedas = new Array(tituloPelicula.length).fill(0);
-            setResultados(resultadosBuquedas);
-        }
-        else{
-            setResultados([]);
-        }
         setBusqueda(tituloPelicula);
     }
 
@@ -38,9 +47,9 @@ export default function ResultadosBusqueda(){
                         <span>Mostrando resultados para: {busqueda}</span>
                     </div>
                     <div className="resultados">
-                        {resultados && resultados.length > 0 && resultados.map(resultado =>(
+                        {resultados && resultados.length > 0 && resultados.map((resultado,index) =>(
                             <>
-                                <Resultado />
+                                <Resultado key={index.toString()} pelicula={resultado} />
                             </>
                         ))}
                     </div>
