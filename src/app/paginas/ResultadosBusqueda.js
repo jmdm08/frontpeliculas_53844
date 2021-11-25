@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Resultado from "../componentes/Resultado";
-import peliculas from "../../peliculas50.json";
+import * as PeliculasService from "../services/PeliculasService"
 import '../css/resultados.css';
 
 export default function ResultadosBusqueda(){
@@ -8,18 +8,18 @@ export default function ResultadosBusqueda(){
     const [resultados, setResultados] = useState([]);
 
     useEffect(()=>{
-        // TODO: CARGAR DESDE EL API.
-        if(busqueda === ""){
-            setResultados(peliculas);
+        if(busqueda.length >= 5){
+            PeliculasService.servicioBusquedaTitulo(busqueda)
+                .then(function(peliculas){
+                    console.log(peliculas)
+                    setResultados(peliculas.data);
+                })
+                .catch(function(error){
+                    console.log(error);
+                })
         }
         else{
-            if(busqueda.length >= 3){
-                let resultadosBusqueda = peliculas.slice(0,busqueda.length);
-                setResultados(resultadosBusqueda);
-            }
-            else{
-                setResultados([]);
-            }
+            setResultados([]);
         }
     }, [busqueda]);
 

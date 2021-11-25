@@ -1,12 +1,13 @@
+import { useHistory } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import "../css/resultado.css"
 
 export default function Resultado(props){
+    let history = useHistory();
 
     function handleClick(evento){
-        evento.stopPropagation();
-        alert("Mostrar detalles de la película...")
+        history.push("/detalle/" + props.pelicula._id);
     }
 
     return (
