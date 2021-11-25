@@ -8,10 +8,9 @@ export default function ResultadosBusqueda(){
     const [resultados, setResultados] = useState([]);
 
     useEffect(()=>{
-        if(busqueda.length >= 5){
+        if(busqueda.length >= 3){
             PeliculasService.servicioBusquedaTitulo(busqueda)
                 .then(function(peliculas){
-                    console.log(peliculas)
                     setResultados(peliculas.data);
                 })
                 .catch(function(error){
@@ -48,9 +47,7 @@ export default function ResultadosBusqueda(){
                     </div>
                     <div className="resultados">
                         {resultados && resultados.length > 0 && resultados.map((resultado,index) =>(
-                            <>
-                                <Resultado key={index.toString()} pelicula={resultado} />
-                            </>
+                            <Resultado key={index.toString()} pelicula={resultado} />
                         ))}
                     </div>
                 </fieldset>
