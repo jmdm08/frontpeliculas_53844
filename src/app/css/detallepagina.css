@@ -7,7 +7,8 @@
 }
 
 .dv-poster_detalle > img {
-    width: 50%;
+    width:100%;
+    object-fit: contain;
 }
 
 .dv-datos_detalle{
