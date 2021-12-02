@@ -1,9 +1,9 @@
 /*
     titulo="Géneros",
-    datos = [
-        "Acción",
-        "Drama"
-    ]
+    datos = {
+        "cantidad": xxx,
+        "ganadas": xxx
+    }
 */
 
 export default function DetalleNominaciones(props){
@@ -12,14 +12,12 @@ export default function DetalleNominaciones(props){
         <>
             <fieldset>
                 <legend>{props.titulo}</legend>
-                <ul>
-                    {props.datos &&
-                        <>
-                            <li>Cantidad: {props.datos.cantidad}</li>
-                            <li>Ganadas: {props.datos.ganadas}</li>
-                        </>
-                    }
-                </ul>
+                {props.datos &&
+                    <ul>
+                        <li key={1}>Cantidad: {props.datos.cantidad}</li>
+                        <li key={2}>Ganadas: {props.datos.ganadas}</li>
+                    </ul>
+                }
             </fieldset>
         </>
     );

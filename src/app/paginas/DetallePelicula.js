@@ -41,6 +41,7 @@ export default function DetallePelicula(){
             -> 4. COMPONENTES
                 -> Actores. -> props -> Array de Objetos
                 -> Género/Países/Idiomas, etc. -> props: Array
+                -> Nominaciones -> props -> Objeto.
     */
     return(
         <>
